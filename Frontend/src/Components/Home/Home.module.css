@@ -73,15 +73,11 @@
   flex-wrap: wrap;
 }
 
-/* =========================
-   CARD
-========================= */
-
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centra verticalmente */
-  align-items: center;     /* centra horizontalmente */
+  justify-content: center;
+  align-items: center;     
   text-align: center;
   background-color: #fff;
   padding: 73px;
@@ -114,10 +110,6 @@
   margin-bottom: 10px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media (max-width: 1024px) {
   .home {
     flex-direction: column;
@@ -140,7 +132,7 @@
 
   .card {
     width: 90%;
-    height: auto;  /* se ajusta a contenido variable */
+    height: auto; 
     padding: 30px;
     display: flex;
     flex-direction: column;
