@@ -34,17 +34,17 @@ function About() {
 
       <div className={styles.cards}>
         <div className={styles.card}>
-          <span className="material-icons">favorite</span>
+          <span className="material-icons">❤️</span>
           <h4>Passion for Cooking</h4>
           <p>Each dish is prepared with love and dedication, keeping culinary traditions alive.</p>
         </div>
         <div className={styles.card}>
-          <span className="material-icons">group</span>
+          <span className="material-icons">👪</span>
           <h4>Family & Community</h4>
           <p>We believe in the importance of creating a family-friendly atmosphere where every guest feels welcome.</p>
         </div>
         <div className={styles.card}>
-          <span className="material-icons">emoji_events</span>
+          <span className="material-icons">🏆</span>
           <h4>Exceptional Quality</h4>
           <p>We carefully select each ingredient and maintain the highest quality standards.</p>
         </div>
