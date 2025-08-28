@@ -7,7 +7,7 @@ export default function Menu() {
   const { cart, addToCart } = useCart(); 
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/dishes")
+    fetch("https://e-commerce-oo7y.onrender.com/api/dishes")
       .then((res) => res.json())
       .then((data) => {
         console.log("Received data:", data);
