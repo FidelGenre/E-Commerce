@@ -2,7 +2,6 @@ import pkg from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
-
 const { Pool } = pkg;
 
 const pool = new Pool({
@@ -11,11 +10,7 @@ const pool = new Pool({
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
   port: process.env.PGPORT,
+  ssl: { rejectUnauthorized: false }, // obligatorio para Render
 });
-
-pool
-  .connect()
-  .then(() => console.log("✅ Conectado a PostgreSQL"))
-  .catch((err) => console.error("❌ Error al conectar a PostgreSQL:", err));
 
 export default pool;

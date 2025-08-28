@@ -1,21 +1,27 @@
 import express from "express";
 import cors from "cors";
 import pool from "./db.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
+// BASE_URL: si existe env variable, úsala, si no, usa tu URL de Render
+const BASE_URL = process.env.BASE_URL || "https://e-commerce-oo7y.onrender.com";
 
 app.use(cors());
 app.use(express.json());
-
 app.use("/images", express.static("public/images"));
 
+// Obtener todos los platos
 app.get("/api/dishes", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM dishes");
     const dishes = result.rows.map((p) => ({
       ...p,
-      image: `http://localhost:${PORT}/images/${p.image}`,
+      image: `${BASE_URL}/images/${p.image}`,
     }));
     res.json(dishes);
   } catch (err) {
@@ -24,6 +30,7 @@ app.get("/api/dishes", async (req, res) => {
   }
 });
 
+// Agregar un plato
 app.post("/api/dishes", async (req, res) => {
   const { name, description, price, image, category } = req.body;
   try {
@@ -33,7 +40,7 @@ app.post("/api/dishes", async (req, res) => {
     );
     res.json({
       ...result.rows[0],
-      image: `http://localhost:${PORT}/images/${result.rows[0].image}`,
+      image: `${BASE_URL}/images/${result.rows[0].image}`,
     });
   } catch (err) {
     console.error("Error agregando dish:", err);
@@ -42,5 +49,5 @@ app.post("/api/dishes", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en ${BASE_URL}`);
 });
