@@ -11,7 +11,7 @@ export default function Cart({ isOpen, onClose }) {
   const toNumber = (val) =>
     typeof val === "number" ? val : parseFloat(String(val).replace(/[^0-9.-]+/g, ""));
 
-  const total = cart.reduce((sum, item) => sum + item.cantidad * toNumber(item.precio), 0);
+  const total = cart.reduce((sum, item) => sum + item.cantidad * toNumber(item.price), 0);
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -44,13 +44,13 @@ export default function Cart({ isOpen, onClose }) {
           <>
             <div className={styles.items}>
               {cart.map((item) => {
-                const unit = toNumber(item.precio);
+                const unit = toNumber(item.price);
                 const sub = unit * item.cantidad;
                 return (
                   <div key={item.id} className={styles.item}>
-                    <img src={item.imagen} alt={item.nombre} className={styles.img} />
+                    <img src={item.image} alt={item.name} className={styles.img} />
                     <div>
-                      <h4>{item.nombre}</h4>
+                      <h4>{item.name}</h4>
                       <p>Quantity: {item.cantidad}</p>
                       <p>Unit Price: €{unit.toFixed(2)}</p>
                       <p>Subtotal: €{sub.toFixed(2)}</p>
