@@ -73,14 +73,22 @@
   flex-wrap: wrap;
 }
 
+/* =========================
+   CARD
+========================= */
+
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: center;     /* centra horizontalmente */
+  text-align: center;
   background-color: #fff;
   padding: 73px;
   width: 24%;
   height: 27vh;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: center;
   transition: all 0.3s ease;
 }
 
@@ -99,6 +107,16 @@
   font-size: 1.2rem;
   line-height: 1.5;
 }
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 1024px) {
   .home {
@@ -121,7 +139,14 @@
   }
 
   .card {
-    width: 90%; 
+    width: 90%;
+    height: auto;  /* se ajusta a contenido variable */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .primaryBtn {
