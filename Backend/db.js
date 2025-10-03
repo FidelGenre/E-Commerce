@@ -1,16 +1,19 @@
 import pkg from "pg";
 import dotenv from "dotenv";
-
 dotenv.config();
+
 const { Pool } = pkg;
 
-const pool = new Pool({
-  host: process.env.PGHOST,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE,
-  port: process.env.PGPORT,
-  ssl: { rejectUnauthorized: false },
-});
+let _pool = globalThis.__pool;
+if (!_pool) {
+  _pool = new Pool({
+    connectionString: process.env.SUPABASE_DB_POOLED_URL,
+    ssl: { rejectUnauthorized: false },
+    max: 1,
+    idleTimeoutMillis: 30000,
+    keepAlive: true,
+  });
+  globalThis.__pool = _pool;
+}
 
-export default pool;
+export default _pool;
