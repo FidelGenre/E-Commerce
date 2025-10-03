@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use("/images", express.static("public/images"));
 
+app.get("/health", (req, res) => {
+  res.status(200).send("ok");
+});
+
 app.get("/api/dishes", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM dishes");
